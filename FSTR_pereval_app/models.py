@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -14,18 +14,21 @@ class Users(models.Model):
     def __str__(self):
         return f'{self.fam} {self.name} {self.otc}'
 
+    class Meta:
+        verbose_name_plural = "Пользователи"
+
 
 class Coords(models.Model):
-        # модель для координат перевала
-        latitude = models.FloatField(max_length=254, verbose_name="Широта")
-        longitude = models.FloatField(max_length=254, verbose_name="Долгота")
-        height = models.IntegerField(verbose_name="Высота")
+    # модель для координат перевала
+    latitude = models.FloatField(max_length=254, verbose_name="Широта")
+    longitude = models.FloatField(max_length=254, verbose_name="Долгота")
+    height = models.IntegerField(verbose_name="Высота")
 
-        def __str__(self):
-            return f'Широта - {self.latitude}. Долгота - {self.longitude}. Высота - {self.height} метров.'
+    def __str__(self):
+        return f'Широта - {self.latitude}. Долгота - {self.longitude}. Высота - {self.height} метров.'
 
-        class Meta:
-            verbose_name_plural = "Координаты"
+    class Meta:
+        verbose_name_plural = "Координаты"
 
 
 class PerevalAdded(models.Model):
@@ -50,6 +53,10 @@ class PerevalAdded(models.Model):
 
     def __str__(self):
         return f"id: {self.pk}, title:{self.title}"
+
+    class Meta:
+        verbose_name_plural = "Данные перевалов"
+
 
 class Images(models.Model):
     # модель для фотографий
