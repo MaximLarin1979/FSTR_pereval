@@ -23,3 +23,29 @@ class PerevalAddedSerializer(serializers.ModelSerializer):
                   "level_autumn",
                   "level_spring",
                   )
+
+
+class PerevalDetailSerializer(serializers.ModelSerializer):
+    # класс сериализатора для детализации перевала
+    class Meta:
+        model = PerevalAdded
+        depth = 1
+        fields = '__all__'
+
+
+class AuthEmailPerevalSerializer(serializers.ModelSerializer):
+    # класс сериализатора для вывода данных по перевалам от пользователя по его адресу почты
+    class Meta:
+        model = PerevalAdded
+        depth = 1
+        fields = ("beauty_title",
+                  "title",
+                  "other_titles",
+                  "connect",
+                  "add_time",
+                  "coords",
+                  "level_winter",
+                  "level_summer",
+                  "level_autumn",
+                  "level_spring",
+                  )
