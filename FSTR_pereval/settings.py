@@ -13,6 +13,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['2510750-yo82697.twc1.net']
 
+CSRF_TRUSTED_ORIGINS = ['https://*.2510750-yo82697.twc1.net']
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
