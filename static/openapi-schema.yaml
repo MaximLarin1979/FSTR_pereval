@@ -1,0 +1,135 @@
+openapi: 3.0.2
+info:
+  title: 'API мобильного приложения Федерации Спортивного Туризма России (ФСТР)'
+  version: "1"
+servers:
+  - url: http://127.0.0.1:8000/api/v1/
+    description: Сервер разработки API-приложения
+paths:
+  /submitData/:
+    post:
+      operationId: submit_data_create
+      description: 'Добавление данных о перевале'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pereval'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pereval'
+          description: 'Успешная отправка данных о перевале'
+      tags:
+        - pereval
+  /submitData/{id}/:
+    get:
+      operationId: submit_data_retrieve
+      description: 'Получение детальных данных о перевале'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: 'Уникальный номер записи перевала'
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pereval'
+          description: 'Успешный вывод данных перевала'
+      tags:
+      - pereval
+    patch:
+      operationId: submit_data_partial_update
+      description: 'Редактирование данных перевала'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: 'Уникальный номер записи перевала'
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pereval'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pereval'
+          description: 'Успешное редактирование данных перевала'
+      tags:
+      - pereval
+  /submitData/{email}/:
+    get:
+      operationId: submit_data_user_email_list
+      description: 'Извлечение списка перевалов пользователя'
+      parameters:
+      - name: email
+        in: path
+        required: true
+        description: 'e-mail пользователя'
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pereval'
+          description: 'Успешный вывод списка перевалов'
+      tags:
+      - pereval
+components:
+  schemas:
+    pereval:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        beauty_title:
+          type: string
+          maxLength: 254
+        title:
+          type: string
+          maxLength: 254
+        other_titles:
+          type: string
+          maxLength: 254
+        status:
+          type: string
+          enum:
+            - new
+            - pending
+            - accepted
+            - rejected
+        connect:
+          type: string
+        user:
+          type: string
+        coords:
+          type: number
+        level_spring:
+          type: string
+          maxLength: 254
+        level_summer:
+          type: string
+          maxLength: 254
+        level_autumn:
+          type: string
+          maxLength: 254
+        level_winter:
+          type: string
+          maxLength: 254
+      required:
+        - name

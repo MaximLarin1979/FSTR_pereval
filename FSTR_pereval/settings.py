@@ -11,8 +11,8 @@ SECRET_KEY = 'django-insecure-qq-e+@(%bsahiicbhh7yhxb_#^2(!t_0p9)f!+ymd6ocx@v*cv
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['2510750-yo82697.twc1.net']
 
+ALLOWED_HOSTS = ['2510750-yo82697.twc1.net', '127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://*.2510750-yo82697.twc1.net']
 
 INSTALLED_APPS = [
